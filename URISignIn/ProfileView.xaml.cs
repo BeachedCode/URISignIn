@@ -18,5 +18,13 @@ public partial class ProfileView : ContentPage
         DisplayAlert("Success", "You have successfully signed up. \n" +
             "Username: " + User_Name + "\n" +
             "Email: " + User_Email, "OK");
+
+        LblUsername.Text = $"Username: {User_Name}";
+        LblEmail.Text = $"Email: {User_Email}";
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("..");
     }
 }

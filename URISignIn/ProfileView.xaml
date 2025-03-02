@@ -3,7 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="URISignIn.ProfileView"
              Title="ProfileView">
-    <VerticalStackLayout>
+    <Grid
+        Margin="20"
+        Padding="20"
+        RowDefinitions="Auto,*"
+        ColumnDefinitions="*">
+        
+        <VerticalStackLayout
+            Grid.Row="0"
+            Grid.Column="0">
+            <Label
+                Text="Username: "
+                FontSize="Large"
+                x:Name="LblUsername"/>
+            <Label
+                Text="Email: "
+                FontSize="Large"
+                x:Name="LblEmail"/>
+        </VerticalStackLayout>
 
-    </VerticalStackLayout>
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalOptions="End"
+            Text="Return to Sign Up"
+            Clicked="Button_Clicked"/>
+    </Grid>
+
 </ContentPage>

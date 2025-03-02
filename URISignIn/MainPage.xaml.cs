@@ -2,24 +2,35 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void SignUpBtn_Clicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            if (string.IsNullOrEmpty(Username.Text) || string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(Password.Text))
+            {
+                DisplayAlert("Error", "Please Enter All Values", "OK");
+            }
+            else 
+            {
+                if (Password.Text.Equals(PasswordConfirm.Text))
+                {
+                    var myData = new Dictionary<string, object>
+                    {
+                        {"username",$"{Username.Text}"},
+                        {"email",$"{Email.Text}"}
+                    };
+                    
+                    Shell.Current.GoToAsync(nameof(ProfileView), myData);
+                }
+                else 
+                {
+                    DisplayAlert("Error", "Password does not equal Confirm Password", "OK");
+                }
+            }
         }
     }
-
 }
